@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@page import="java.util.*,de.tub.as.smm.models.*"%>	
 <!DOCTYPE html>
 <html lang="de">
 
@@ -44,27 +44,33 @@
         <div class="content">
             <h2>Ãœbersicht</h2>
             <hr />
+            <form method="POST" action="SmartMeterServlet">
+			Name: <input type="text" name="geraetekennung" /> 
+			maxbel: <input type="text" name="maxbel" /> <input type="submit"
+			value="Add" />
+			</form>
             <table class="overview">
                 <tr>
                     <th>GerÃ¤tetyp</th>
                     <th>GerÃ¤tekennung</th>
                     <th>Optionen</th>
                 </tr>
-                <tr class="overview">
+                
+                <%
+			@SuppressWarnings("unchecked")
+			List<SmartMeter> smartmeters = (List<SmartMeter>) request.getAttribute("smartmeter");
+			if (smartmeters != null) {
+				for (SmartMeter smartmeter : smartmeters) {
+		%>
+		<tr class="overview">
                     <td><img src="./media/image.png" height="100px" width="100px"></img></td>
-                    <td>AB12345678</td>
+                    <td><%=smartmeter.geraetekennung %></td>
                     <td><a class="detailButton" href="./detail1.html">Zur Detailansicht</a></td>
                 </tr>
-                <tr class="overview">
-                    <td><img src="./media/image.png" height="100px" width="100px"></img></td>
-                    <td>AB32942628</td>
-                    <td><a class="detailButton" href="./detail2.html">Zur Detailansicht</a></td>
-                </tr>
-                <tr class="overview">
-                    <td><img src="./media/image.png" height="100px" width="100px"></img></td>
-                    <td>AB78988293</td>
-                    <td><a class="detailButton" href="./detail3.html">Zur Detailansicht</a></td>
-                </tr>
+		<%
+			}
+			}
+		%>
             </table>
 
         </div>
