@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <title>AnwSys DemoApp</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./script.js" async></script>
+</head>
+
+<body>
+
+    <div class="headerBg">
+        <div class="menuBg">
+            <div class="menu">
+                <div class="logoFont">
+                    Group 46
+                </div>
+                <ul>
+                    <li><a href="./verwalten.html">Verwaltung</a></li>
+                    <li><a class="activ" href="#">Startseite</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="heading">
+            <p style="font-size:44px">Anwendungssysteme Ãœbung 1 SS 2017</p>
+            <div class="subHeading">
+                <div class="subHLeft">
+                    Eine einfache Web Applikation zum verwalten und Ã¼berwachen von Smart Merters
+                </div>
+                <div class="subHRight">
+                    <a class="button" href="./verwalten.html">Zur Verwaltung</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="content">
+            <center><h1>POWERFUL TOOLS TO HELP YOU MANAGE YOUR INTERESTS</h1></center>
+            <table class="landing">
+                <tr>
+                    <td>
+                        <img src="./media/detail.png"></img>
+                    </td>
+                    <td class="landing">
+                        Ihre Webapplikation soll sowohl Ã¼ber eine GesamtÃ¼bersicht aller eingetragenen Smart
+                        Meter, als auch individuelle Detailsichten fÃ¼r jeden Smart Meter verfÃ¼gen. Zwischen den
+                        individuellen Ansichten und der Ãœbersichtseite muss navigiert werden kÃ¶nnen. Legen Sie
+                        mindestens zwei Detailansichten an. <br />
+                        Auf der individuellen Detailansicht eines Smart Meters sollen das Produktbild des GerÃ¤ts und
+                        die statischen Eigenschaften dargestellt sein. Beim Aufruf einer Detailansicht soll auÃŸerdem
+                        der aktuelle Status des GerÃ¤ts angezeigt werden, d.h. anliegende Spannung und StromstÃ¤rke.
+                        Diese Werte sollen zufallsgeneriert (gleichverteilt) sein und bei jedem Aufruf neu berechnet
+                        werden. Die Spannung (Genauigkeit: 0.1 Volt) soll zwischen 220 und 240 Volt liegen, die
+                        StromstÃ¤rke (Genauigkeit: 0.1 Ampere) zwischen 0 und (der jeweiligen maximalen Belastung
+                        +5 Ampere). Sofern die StromstÃ¤rke oberhalb der zulÃ¤ssigen Maximalbelastung liegt, soll auf
+                        der Smart Meter-Detailseite eine Warnung angezeigt werden.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="./media/edit.png"></img>
+                    </td>
+                    <td class="landing">
+                        Beim Ablesen trÃ¤gt der Nutzer Ihrer Webapplikation dabei seine Nutzerkennung und einen
+                        Verbrauchswert (in kWh) in ein Formular ein. Die Nutzerkennung besteht aus den Initialen
+                        des Namens des Nutzers und den letzten beiden Ziffern seiner Matrikelnummer. Ablesungen
+                        sollen nach dem Abschicken durch den Nutzer automatisch mit dem Datum des
+                        Ablesezeitpunkts versehen und auf der Detailansicht des jeweiligen Smart Meters in eine
+                        Liste oder Tabelle aufgenommen werden. <br />
+                        Sie mÃ¼ssen keine Zugriffskontrolle oder Ã¤hnliches implementieren. Auch persistente
+                        Datenhaltung muss nicht implementiert werden, d.h. wenn Sie eine Detailansicht im Browser
+                        neu laden kann die Liste der Ablesungen wieder leer sein.
+                    </td>
+                </tr>
+            </table>
+            <br />
+            <h2>Vorgehensweise</h2>
+            <hr />
+            <p>
+                <b>Schritt 1</b><br />
+                Stellen Sie konzeptionell dar, welche Seiten ihre Webapplikation umfassen wird, welche
+                Funktionen jeweils auf diesen zur VerfÃ¼gung stehen und welche Informationen und
+                Interaktionselemente darauf vorhanden sein werden.
+                ErlÃ¤utern Sie zudem an welcher Stelle sie welche Technologie einsetzen werden.
+                Ãœberlegen Sie sich auÃŸerdem ein einfaches Design fÃ¼r Ihre Applikation.
+                <br /><br />
+                <b>Schritt 2</b><br />
+                Beschreiben Sie Ihre Seiten als HTML-Dokumente. WÃ¤hlen Sie geeignete Elemente um
+                Seitenbestandteile sinnvoll auszuzeichnen. BegrÃ¼nden Sie kurz, warum Sie sich fÃ¼r die
+                gewÃ¤hlten Elemente entschieden haben.
+                <br /><br />
+                <b>Schritt 3</b><br />
+                Komplettieren Sie das in Schritt 1 entworfene Design mit Hilfe von CSS. Dokumentieren Sie
+                ihr Vorgehen.
+                <br /><br />
+                <b>Schritt 4</b><br />
+                Implementieren Sie dynamische Bestandteile und Funktionen mit Hilfe von JavaScript. Gerne
+                dÃ¼rfen Sie jQuery verwenden. ErlÃ¤utern Sie die so realisierten Features und ihren Ansatz fÃ¼r
+                die Umsetzung.
+                <br /><br />
+                <b>Schritt 5</b><br />
+                Dokumentieren Sie die Ergebnisse Ihrer Arbeit in einer PrÃ¤sentation (Powerpoint o.Ã¤.). Diese
+                PrÃ¤sentation muss fÃ¼r das GesamtverstÃ¤ndnis Ihrer LÃ¶sung genÃ¼gen, daher sollten relevante
+                CodeauszÃ¼ge enthalten sein. In der PrÃ¤sentation mÃ¼ssen auÃŸerdem mindestens vier (4)
+                unterschiedliche Nutzerkennungen (vgl. Aufgabenstellung) zu sehen sein, die Ihre
+                tatsÃ¤chlichen Namen/Matrikelnummern der Gruppe enthalten.
+                <br /><br />
+                <b>Schritt 6</b><br />
+                Exportieren Sie die PrÃ¤sentation als PDF-Dokument. Packen Sie ihren kompletten Code und
+                alle zugehÃ¶rige Artefakte (z.B. Bilder) zudem als .zip oder .7z Datei.
+                Reichen Sie die PrÃ¤sentation und die .zip-Datei mit Hilfe des ISIS-Systems ein. Bewertet wird
+                nur diese PrÃ¤sentation! Der Quellcode dient dabei als Referenz und Nachweis der Leistung.
+                Es genÃ¼gt, wenn die Einreichung durch ein Gruppenmitglied erfolgt.<br />
+                Deadline fÃ¼r die Abgabe per Upload: <b>28.05.2017, 23:55</b>.
+            </p>
+        </div>
+    </div>
+
+    <div class="footerBg">
+        <div class="footer">
+            <div class="copyright">
+                Â© Copyright 2017 by <b class="footerFont">Group 46</b>
+            </div>
+            <div class="toTop">
+                <a class="ttop" href="#">Go to top</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
