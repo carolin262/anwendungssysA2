@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import de.tub.as.smm.models.SmartMeter;
 import de.tub.as.smm.models.User;
 
 /**
@@ -21,6 +22,17 @@ public class UserDao {
     // Stores a new user:
     public void persist(User user) {
         em.persist(user);
+    }
+ // Stores a new SmartMeter:
+    public void persist(SmartMeter meter) {
+        em.persist(meter);
+    }
+
+ // Retrieves all the SmartMeters:
+    public List<SmartMeter> getAllSmartMeters() {
+        TypedQuery<SmartMeter> query = em.createQuery(
+            "SELECT u FROM SmartMeter u ORDER BY u.id", SmartMeter.class);
+        return query.getResultList();
     }
  
     // Retrieves all the users:
