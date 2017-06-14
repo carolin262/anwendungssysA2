@@ -27,13 +27,13 @@
             </div>
         </div>
         <div class="heading">
-            <p style="font-size:44px">Verwaltung: Ãœbersicht</p>
+            <p style="font-size:44px">Verwaltung: Übersicht</p>
             <div class="subHeading">
                 <div class="subHLeft">
-                    Eine einfache Web Applikation zum verwalten und Ã¼berwachen von Smart Merters
+                    Eine einfache Web Applikation zum verwalten und Überwachen von Smart Meters
                 </div>
                 <div class="subHRight">
-                    <a class="button" href="./index.html">ZurÃ¼ck zur Startseite</a>
+                    <a class="button" href="./index.html">Zurück zur Startseite</a>
                 </div>
             </div>
         </div>
@@ -42,7 +42,7 @@
 
     <div class="main">
         <div class="content">
-            <h2>Ãœbersicht</h2>
+            <h2>Übersicht</h2>
             <hr />
             <form method="POST" action="SmartMeterServlet">
 			Name: <input type="text" name="geraetekennung" /> 
@@ -51,8 +51,8 @@
 			</form>
             <table class="overview">
                 <tr>
-                    <th>GerÃ¤tetyp</th>
-                    <th>GerÃ¤tekennung</th>
+                    <th>Gerätetyp</th>
+                    <th>Gerätekennung</th>
                     <th>Optionen</th>
                 </tr>
                 
@@ -65,7 +65,7 @@
 		<tr class="overview">
                     <td><img src="./media/image.png" height="100px" width="100px"></img></td>
                     <td><%=smartmeter.geraetekennung %></td>
-                    <td><a class="detailButton" href="./detail1.html">Zur Detailansicht</a></td>
+                    <td><a class="detailButton" href="./detail1.jsp">Zur Detailansicht</a></td>
                 </tr>
 		<%
 			}

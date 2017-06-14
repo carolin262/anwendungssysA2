@@ -20,7 +20,7 @@
                 Group 46
             </div>
             <ul>
-                <li><a class="activ" href="./verwalten.html">Verwaltung</a></li>
+                <li><a class="activ" href="./verwalten.jsp">Verwaltung</a></li>
                 <li><a href="./index.html">Startseite</a></li>
             </ul>
         </div>
@@ -30,10 +30,10 @@
         <p style="font-size:44px">Verwaltung: Smart Meter</p>
         <div class="subHeading">
             <div class="subHLeft">
-                Eine einfache Web Applikation zum verwalten und Ã¼berwachen von Smart Merters
+                Eine einfache Web Applikation zum verwalten und Ueberwachen von Smart Meters
             </div>
             <div class="subHRight">
-                <a class="button" href="./verwalten.html">ZurÃ¼ck zur Ãbersicht</a>
+                <a class="button" href="./verwalten.jsp">Zurueck zur Uebersicht</a>
             </div>
         </div>
     </div>
@@ -62,7 +62,7 @@
                                 <td>
                                     <div id="warnung">
                                         <h3>WARNUNG!</h3>
-                                        <p>Die StromstÃ¤rke liegt oberhalb der zulÃ¤ssigen Maximalbelastung</p>
+                                        <p>Die Stromstaerke liegt oberhalb der zulaessigen Maximalbelastung</p>
                                     </div>
                                 </td>
                             </tr>
@@ -102,7 +102,7 @@
     <div class="footerBg">
         <div class="footer">
             <div class="copyright">
-                Â© Copyright 2017 by <b class="footerFont">Group 46</b>
+                © Copyright 2017 by <b class="footerFont">Group 46</b>
             </div>
             <div class="toTop">
                 <a class="ttop" href="#">Go to top</a>
