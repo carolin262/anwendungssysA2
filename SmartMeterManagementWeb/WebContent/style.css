@@ -4,15 +4,15 @@
 
 /*Resets and overrides*/
 html, body, div, h1, h2, h3, h4, h5, h6, p, ul, li, span {
-    margin: 0;
-    padding: 0;
-    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+	margin: 0;
+	padding: 0;
+	font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic,
+		sans-serif;
 }
 
 hr {
-    border-top: 1px solid #24425F;
+	border-top: 1px solid #24425F;
 }
-
 
 /*===================================
 ============== Header ===============
@@ -20,98 +20,97 @@ hr {
 
 /*menu background*/
 .menuBg {
-    background-color: #325C84;
-    box-shadow: 0px 0px 4px 0px #325C84;
-    position: fixed;
-    min-width: 100%;
-    color: white;
+	background-color: #325C84;
+	box-shadow: 0px 0px 4px 0px #325C84;
+	position: fixed;
+	min-width: 100%;
+	color: white;
 }
 
 /*logo Group 46*/
 .logoFont {
-    font-size: 26px;
-    font-weight: bold;
-    float: left;
+	font-size: 26px;
+	font-weight: bold;
+	float: left;
 }
 
 /*mainmenu*/
 .menu {
-    margin: auto;
-    padding-top: 20px;
-    max-width: 920px;
+	margin: auto;
+	padding-top: 20px;
+	max-width: 920px;
 }
 
 /*navigation menu*/
 div.menu ul {
-    list-style-type: none;
-    margin: 0;
+	list-style-type: none;
+	margin: 0;
 }
 
-    div.menu ul li {
-        float: right;
-    }
+div.menu ul li {
+	float: right;
+}
 
-        div.menu ul li a {
-            display: block;
-            padding-top: 6px;
-            padding-bottom: 18px;
-            margin-left: 16px;
-            margin-right: 16px;
-            color: white;
-            text-decoration: none;
-        }
+div.menu ul li a {
+	display: block;
+	padding-top: 6px;
+	padding-bottom: 18px;
+	margin-left: 16px;
+	margin-right: 16px;
+	color: white;
+	text-decoration: none;
+}
 
 li a:hover {
-    border-bottom: 4px solid white;
+	border-bottom: 4px solid white;
 }
 
 .activ {
-    border-bottom: 4px solid white;
+	border-bottom: 4px solid white;
 }
 
 /*header heading*/
 .heading {
-    margin: auto;
-    text-align: center;
-    padding-top: 110px;
-    padding-bottom: 60px;
-    color: white;
-    background-color: #24425F;
+	margin: auto;
+	text-align: center;
+	padding-top: 110px;
+	padding-bottom: 60px;
+	color: white;
+	background-color: #24425F;
 }
 
 /*header subheading*/
 .subHeading {
-    margin: auto;
-    max-width: 640px;
+	margin: auto;
+	max-width: 640px;
 }
 
 .subHLeft {
-    max-width: 400px;
-    padding-top: 30px;
-    text-align: left;
-    float: left;
+	max-width: 400px;
+	padding-top: 30px;
+	text-align: left;
+	float: left;
 }
 
 .subHRight {
-    padding-top: 40px;
-    text-align: right;
+	padding-top: 40px;
+	text-align: right;
 }
 
 /*button*/
 .button {
-    background: white;
-    padding: 16px;
-    border-radius: 8px;
-    color: black;
-    font-weight: normal;
-    font-size: 20px;
-    text-decoration: none;
+	background: white;
+	padding: 16px;
+	border-radius: 8px;
+	color: black;
+	font-weight: normal;
+	font-size: 20px;
+	text-decoration: none;
 }
 
 a.button:hover {
-    background-color: #f2f2f2;
+	background-color: #f2f2f2;
 }
-
 
 /*===================================
 ============== Content ==============
@@ -119,130 +118,117 @@ a.button:hover {
 
 /*mainboddy background*/
 .main {
-    background: #f2f2f2;
+	background: #f2f2f2;
 }
 
 /*mainbody content box*/
 .content {
-    background: white;
-    margin: auto;
-    max-width: 920px;
-    padding: 20px 20px;
-    color: black;
-    box-shadow: 0px 0px 4px 0px silver;
+	background: white;
+	margin: auto;
+	max-width: 920px;
+	padding: 20px 20px;
+	color: black;
+	box-shadow: 0px 0px 4px 0px silver;
 }
-
 
 /*Startseite content as a table*/
 table.landing {
-    border-spacing: 0px 30px;
-    box-shadow: 0px 0px 0px 0px silver;
+	border-spacing: 0px 30px;
+	box-shadow: 0px 0px 0px 0px silver;
 }
 
 td.landing {
-    vertical-align: top;
+	vertical-align: top;
 }
 
 /*Verwaltung: Übersichtsseite, divices in a table*/
 table.overview {
-    border-spacing: 0px 16px;
-    text-align: center;
-    width: 100%
+	border-spacing: 0px 16px;
+	text-align: center;
+	width: 100%
 }
 
 tr.overview {
-    outline: thin solid #24425F;
+	outline: thin solid #24425F;
 }
 
-    tr.overview:hover {
-        background-color: #f5f5f5
-    }
+tr.overview:hover {
+	background-color: #f5f5f5
+}
 
 td {
-    padding: 10px;
-    min-width: 200px;
+	padding: 10px;
+	min-width: 200px;
 }
-
-a.detailButton {
-    background: #325C84;
-    padding: 8px;
-    border-radius: 6px;
-    color: white;
-    text-decoration: none;
-}
-
-    a.detailButton:hover {
-        background: #2B4F71;
-    }
 
 /*Verwaltung: Detailansicht*/
 table.detail {
-    width: 100%
+	width: 100%;
+	cellpadding: 50px;
 }
 
 tr.detail {
-    outline: thin solid #24425F;
+	outline: thin solid #24425F;
 }
 
 table.status {
-    max-width:300px;
+	max-width: 300px;
+	margin: 10px;
 }
 
 /*warnings*/
-#warnung {
-    display: none;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 15px;
-    text-align: center;
+.warning {
+	/*display: none;*/
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
+	text-align: center;
+	background-color: #F2DEDE;
+	padding: 8px;
+	border-radius: 6px;
+	border: 1px solid #CC0002;
 }
 
-    #warnung h3 {
-        color: red;
-    }
-
-#fehlermeldung {
-    font-size: 11px;
-    color: red;
-    margin-top: 10px;
+h3.warningHead {
+	color: #CC0002;
 }
 
 /*Ablesen form*/
 input {
-    border: 1px solid #24425F;
-    border-radius: 4px;
-    width: 100%;
-    padding: 10px 0px;
-    margin: 8px 0;
+	border: 1px solid #24425F;
+	border-radius: 4px;
+	width: 100%;
+	padding: 10px 0px;
+	margin: 8px 0px;
 }
 
 /*Ablesen button*/
-Button.inButton {
-    background: #325C84;
-    padding: 8px;
-    border: none;
-    border-radius: 6px;
-    color: white;
-    text-decoration: none;
-    min-width: 100%;
-    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
-    font-weight: bold;
+input.inButton {
+	background: #325C84;
+	padding: 8px;
+	border: none;
+	border-radius: 6px;
+	color: white;
+	text-decoration: none;
+	min-width: 100%;
+	font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic,
+		sans-serif;
+	font-weight: bold;
 }
 
-    Button.inButton:hover {
-        background: #2B4F71;
-    }
+input.inButton:hover {
+	background: #2B4F71;
+}
 
 /*Ablesen results*/
 table.event {
-    width: 100%;
+	width: 100%;
 }
 
 th.event {
-    text-align: left;
-    padding-left: 10px;
+	text-align: left;
+	padding-left: 10px;
 }
-
 
 /*===================================
 ============== footer ===============
@@ -250,49 +236,49 @@ th.event {
 
 /*footer background*/
 .footerBg {
-    background-color: #325C84;
-    min-width: 100%;
-    box-shadow: 0px 0px 4px 0px #325C84;
+	background-color: #325C84;
+	min-width: 100%;
+	box-shadow: 0px 0px 4px 0px #325C84;
 }
 
 /*footer box*/
 .footer {
-    padding-top: 25px;
-    padding-bottom: 10px;
-    margin: auto;
-    max-width: 920px;
-    color: white;
-    font-style: italic;
-    font-size: 12px;
+	padding-top: 25px;
+	padding-bottom: 10px;
+	margin: auto;
+	max-width: 920px;
+	color: white;
+	font-style: italic;
+	font-size: 12px;
 }
 
 /*copyright position*/
 .copyright {
-    text-align: left;
-    float: left;
+	text-align: left;
+	float: left;
 }
 
 /*footer copyright font*/
 .footerFont {
-    font-style: normal;
-    font-size: 14px;
+	font-style: normal;
+	font-size: 14px;
 }
 
 /*to top position*/
 .toTop {
-    text-align: right;
+	text-align: right;
 }
 
 /*to top button*/
 a.ttop {
-    background: white;
-    padding: 6px;
-    border-radius: 4px;
-    color: black;
-    font-size: 10px;
-    text-decoration: none;
+	background: white;
+	padding: 6px;
+	border-radius: 4px;
+	color: black;
+	font-size: 10px;
+	text-decoration: none;
 }
 
-    a.ttop:hover {
-        background: #f2f2f2;
-    }
+a.ttop:hover {
+	background: #f2f2f2;
+}
