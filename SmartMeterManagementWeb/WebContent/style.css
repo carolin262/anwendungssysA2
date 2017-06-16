@@ -172,7 +172,6 @@ tr.detail {
 }
 
 table.status {
-	max-width: 300px;
 	margin: 10px;
 }
 
@@ -187,10 +186,28 @@ table.status {
 	padding: 8px;
 	border-radius: 6px;
 	border: 1px solid #CC0002;
+	width: 500px;
 }
 
 h3.warningHead {
 	color: #CC0002;
+}
+
+.info {
+	/*display: none;*/
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
+	text-align: center;
+	background-color: #F1F6FB;
+	padding: 8px;
+	border-radius: 6px;
+	border: 1px solid #3B83C6;
+	width: 500px;
+}
+
+h3.infoHead {
+	color: #3B83C6;
 }
 
 /*Ablesen form*/
