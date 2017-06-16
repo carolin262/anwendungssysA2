@@ -18,7 +18,7 @@
 			<div class="logoFont">Group 46</div>
 			<ul>
 				<li><a class="activ" href="./verwalten">Verwaltung</a></li>
-				<li><a href="./index.html">Startseite</a></li>
+				<li><a href="./">Startseite</a></li>
 			</ul>
 		</div>
 	</div>
@@ -48,21 +48,18 @@
 							<h2>Gerätekennung: <%=smartmeter.geraetekennung%></h2>
 							<tr>
 								<td>Maximale Belastung:</td>
-								<td><%=smartmeter.maxBelastung%></td>
+								<td><%=smartmeter.maxBelastung%> Ampere</td>
 							</tr>
 							<tr>
 								<td>Spannung:</td>
-								<td></td>
+								<td><%=smartmeter.spannung%> Volt</td>
 							</tr>
 							<tr>
 								<td>Stromstärke:</td>
-								<td></td>
+								<td><%=smartmeter.strom%> Ampere</td>
 							</tr>
 						</table>
-						<div class="warning">
-							<h3 class="warningHead">WARNUNG!</h3>
-							Die Stromstärke liegt oberhalb der zulässigen Maximalbelastung
-						</div>
+						<%=smartmeter.currentStatus()%>
 					</td>
 				</tr>
 			</table>
