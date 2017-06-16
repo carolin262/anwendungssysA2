@@ -26,10 +26,12 @@ public class DetailServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		for (SmartMeter smartmeter : smartmeterDao.getAllSmartMeters()) {
-			if (Long.parseLong(request.getParameter("id")) == smartmeter.id)
+			if (Long.parseLong(request.getParameter("id")) == smartmeter.id) {
+				smartmeter.randomSpannung();
+				smartmeter.randomStrom();
 				request.setAttribute("smartmeter", smartmeter);
+			}
 		}
 		request.getRequestDispatcher("/detail.jsp").forward(request, response);
 	}
