@@ -17,7 +17,7 @@ import de.tub.as.smm.models.User;
 /**
  * Servlet implementation class SmartMeterServlet
  */
-@WebServlet("/SmartMeterServlet")
+@WebServlet("/verwalten")
 public class SmartMeterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
