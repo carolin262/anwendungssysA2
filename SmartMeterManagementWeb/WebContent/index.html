@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="./style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="./script.js" async></script>
+    <script src="/path/to/jquery.cookie.js"></script>
 </head>
 
 <body>
@@ -28,6 +29,7 @@
             <div class="subHeading">
                 <div class="subHLeft">
                     Eine einfache Web Applikation zum verwalten und Ueberwachen von Smart Meters
+                    <br/>
                 </div>
                 
             </div>
@@ -41,9 +43,12 @@
                 <tr>
                 	<form method="POST" action="verwalten">
 						Loginname: 
-						<input type="text" name="loginname" /> 
+						<input type="text" name="logname" /> 
+						<script> 
+							$.cookie('loginname', 'logname'); 
+						</script>
 						Passwort: 
-						<input type="text" name="passwort" /> 
+						<input type="password" name="passwort" /> 
 						<input class="inButton" type="submit" value="Login" />
 					</form>
                     <td>

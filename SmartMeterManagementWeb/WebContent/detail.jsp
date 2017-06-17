@@ -8,9 +8,15 @@
 <head>
 <title>AnwSys DemoApp</title>
 <link rel="stylesheet" type="text/css" href="./style.css">
+
+<script type="text/javascript" >
+	function cook(){
+		var loginname = $.cookie("loginname");
+	}
+</script>
 </head>
 
-<body>
+<body onload="cook()">
 
 	<!-- Navigation Menu -->
 	<div class="menuBg">
@@ -67,10 +73,9 @@
 			<h2>Ablesen</h2>
 			<hr />
 			<form>
-				Nutzererkennung: <br /> 
-				<input type="text" name="nutzerkennung" maxlength="4">
 				Verbrauchswert (in kWh):
 				<input type="number" name="verbrauchswert">
+				<input type="hidden" name="id" value="<%=smartmeter.id%>">
 				<input class="inButton" type="submit" value="Ablesen">
 			</form>
 			<br />
@@ -78,7 +83,7 @@
 			<hr />
 			<table class="event" id="tableAblesen">
 				<tr>
-					<th class="event">Nutzerkennung</th>
+					<th class="event" id="cook">Nutzerkennung</th>
 					<th class="event">Verbrauchswert (in kWh)</th>
 					<th class="event">Datum</th>
 				</tr>
