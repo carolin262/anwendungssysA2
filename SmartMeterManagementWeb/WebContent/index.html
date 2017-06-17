@@ -18,7 +18,7 @@
                     Group 46
                 </div>
                 <ul>
-                    <li><a href="./verwalten.jsp">Verwaltung</a></li>
+                    <li><a>Verwaltung</a></li>
                     <li><a class="activ" href="#">Startseite</a></li>
                 </ul>
             </div>
@@ -29,9 +29,7 @@
                 <div class="subHLeft">
                     Eine einfache Web Applikation zum verwalten und Ueberwachen von Smart Meters
                 </div>
-                <div class="subHRight">
-                    <a class="button" href="./verwalten.jsp">Zur Verwaltung</a>
-                </div>
+                
             </div>
         </div>
     </div>
@@ -41,6 +39,13 @@
             <center><h1>POWERFUL TOOLS TO HELP YOU MANAGE YOUR INTERESTS</h1></center>
             <table class="landing">
                 <tr>
+                	<form method="POST" action="verwalten">
+						Loginname: 
+						<input type="text" name="loginname" /> 
+						Passwort: 
+						<input type="text" name="passwort" /> 
+						<input class="inButton" type="submit" value="Login" />
+					</form>
                     <td>
                         <img src="./media/detail.png"></img>
                     </td>
