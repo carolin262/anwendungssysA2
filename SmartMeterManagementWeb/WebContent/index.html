@@ -6,8 +6,15 @@
     <title>AnwSys DemoApp</title>
     <link rel="stylesheet" type="text/css" href="./style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="./script.js" async></script>
-    <script src="/path/to/jquery.cookie.js"></script>
+    <script src="./js.cookie.js"></script>
+    <script type="text/javascript" >
+		function setCookie(){
+			var logname = document.getElementById("benutzername").value
+			Cookies.set("loginname", logname);
+			var newUrl ='./verwalten.jsp';
+			document.location.href=newUrl;
+		}
+	</script>
 </head>
 
 <body>
@@ -41,15 +48,12 @@
             <center><h1>POWERFUL TOOLS TO HELP YOU MANAGE YOUR INTERESTS</h1></center>
             <table class="landing">
                 <tr>
-                	<form method="POST" action="verwalten">
+                	<form>
 						Loginname: 
-						<input type="text" name="logname" /> 
-						<script> 
-							$.cookie('loginname', 'logname'); 
-						</script>
+						<input id="benutzername" type="text" name="logname" /> 
 						Passwort: 
 						<input type="password" name="passwort" /> 
-						<input class="inButton" type="submit" value="Login" />
+						<input class="inButton" value="Login"  onclick="setCookie();" />
 					</form>
                     <td>
                         <img src="./media/detail.png"></img>

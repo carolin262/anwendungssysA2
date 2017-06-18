@@ -8,10 +8,10 @@
 <head>
 <title>AnwSys DemoApp</title>
 <link rel="stylesheet" type="text/css" href="./style.css">
-
+<script src="./js.cookie.js"></script>
 <script type="text/javascript" >
 	function cook(){
-		var loginname = $.cookie("loginname");
+		var loginname = Cookies.get("loginname");
 	}
 </script>
 </head>
@@ -83,9 +83,9 @@
 			<hr />
 			<table class="event" id="tableAblesen">
 				<tr>
-					<th class="event" id="cook">Nutzerkennung</th>
-					<th class="event">Verbrauchswert (in kWh)</th>
-					<th class="event">Datum</th>
+					<th class="event" id="loginname">Benutzername</th>
+					<th class="event" id="verbrauchswert">Verbrauchswert (in kWh)</th>
+					<th class="event" id="datum">Datum</th>
 				</tr>
 			</table>
 		</div>
