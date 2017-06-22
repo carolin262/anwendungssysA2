@@ -8,15 +8,9 @@
 <head>
 <title>AnwSys DemoApp</title>
 <link rel="stylesheet" type="text/css" href="./style.css">
-<script src="./js.cookie.js"></script>
-<script type="text/javascript" >
-	function cook(){
-		var loginname = Cookies.get("loginname");
-	}
-</script>
 </head>
 
-<body onload="cook()">
+<body>
 
 	<!-- Navigation Menu -->
 	<div class="menuBg">
@@ -34,7 +28,7 @@
 		<p style="font-size: 44px">Verwaltung: Smart Meter</p>
 		<div class="subHeading">
 			<div class="subHLeft">Eine einfache Web Applikation zum
-				verwalten und überwachen von Smart Merters</div>
+				verwalten und überwachen von Smart Meters</div>
 			<div class="subHRight">
 				<a class="button" href="./verwalten">Zurück zur Übersicht</a>
 			</div>
@@ -51,42 +45,55 @@
 					<td><img src="./media/image.png" height="340" width="340"></td>
 					<td>
 						<table class="status">
-							<h2>Gerätekennung: <%=smartmeter.geraetekennung%></h2>
+							<h2>Gerätekennung: <%=smartmeter.getGeraetekennung()%></h2>
 							<tr>
 								<td>Maximale Belastung:</td>
-								<td><%=smartmeter.maxBelastung%> Ampere</td>
+								<td><%=smartmeter.getMaxBelastung()%> Ampere</td>
 							</tr>
 							<tr>
 								<td>Spannung:</td>
-								<td><%=smartmeter.spannung%> Volt</td>
+								<td><%=smartmeter.getSpannung()%> Volt</td>
 							</tr>
 							<tr>
 								<td>Stromstärke:</td>
-								<td><%=smartmeter.strom%> Ampere</td>
+								<td><%=smartmeter.getStrom()%> Ampere</td>
 							</tr>
 						</table>
 						<%=smartmeter.currentStatus()%>
 					</td>
 				</tr>
 			</table>
-			<br />
-			<h2>Ablesen</h2>
-			<hr />
-			<form>
-				Verbrauchswert (in kWh):
-				<input type="number" name="verbrauchswert">
-				<input type="hidden" name="id" value="<%=smartmeter.id%>">
-				<input class="inButton" type="submit" value="Ablesen">
-			</form>
+			<%
+				if (request.getAttribute("user") != null) {
+					User user = (User) request.getAttribute("user");
+			%>
+			<%=user.ablesenForm()%>
+			<%
+				}
+			%>
 			<br />
 			<h2>Alle Ablesungen</h2>
 			<hr />
-			<table class="event" id="tableAblesen">
+			<table class="event">
 				<tr>
-					<th class="event" id="loginname">Benutzername</th>
-					<th class="event" id="verbrauchswert">Verbrauchswert (in kWh)</th>
-					<th class="event" id="datum">Datum</th>
+					<th class="event">Nutzerkennung</th>
+					<th class="event">Verbrauchswert (in kWh)</th>
+					<th class="event">Uhrzeit, Datum</th>
 				</tr>
+				<%
+					List<Record> allRecords = smartmeter.getSmartmeterRecords();
+					if (allRecords != null) {
+						for (Record record : allRecords) {
+				%>
+				<tr>
+					<td><%=record.getUser()%></td>
+					<td><%=record.getRecord()%></td>
+					<td><%=record.getFormattedDate()%></td>
+				</tr>
+				<%
+					}
+					}
+				%>
 			</table>
 		</div>
 	</div>

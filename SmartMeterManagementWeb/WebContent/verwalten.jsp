@@ -29,7 +29,7 @@
 		<p style="font-size: 44px">Verwaltung: Übersicht</p>
 		<div class="subHeading">
 			<div class="subHLeft">Eine einfache Web Applikation zum
-				verwalten und überwachen von Smart Merters</div>
+				verwalten und überwachen von Smart Meters</div>
 			<div class="subHRight">
 				<a class="button" href="./">Zurück zur Startseite</a>
 			</div>
@@ -55,11 +55,12 @@
 				%>
 				<tr class="overview">
 					<td><img src="./media/image.png" height="100px" width="100px"></img></td>
-					<td><%=smartmeter.geraetekennung%></td>
+					<td><%=smartmeter.getGeraetekennung()%></td>
 					<td>
 						<form method="GET" action="detail">
-							<input type="hidden" name="id" value="<%=smartmeter.id%>">
-							<a href="./detail"><input class="inButton" type="submit" value="Zur Detailansicht" /></a>
+							<input type="hidden" name="id" value="<%=smartmeter.getId()%>">
+							<a href="./detail"><input class="inButton" type="submit"
+								value="Zur Detailansicht" /></a>
 						</form>
 					</td>
 				</tr>
@@ -68,16 +69,22 @@
 					}
 				%>
 			</table>
-			<br />
-			<h2>Geräte hinzufügen</h2>
-			<hr />
-			<form method="POST" action="verwalten">
-				Gerätekennung: 
-				<input type="text" name="geraetekennung" /> 
-				Maximale Belastung (in Ampere): 
-				<input type="number" name="maxbel" /> 
-				<input class="inButton" type="submit" value="Hinzufügen" />
-			</form>
+			<%
+				if (request.getAttribute("user") == null) {
+			%>
+			<%=User.loginForm()%>
+			<%
+				}
+			%>
+			<%
+				if (request.getAttribute("user") != null) {
+					User user = (User) request.getAttribute("user");
+			%>
+			<%=user.addDevices()%>
+			<%=user.logout()%>
+			<%
+				}
+			%>
 		</div>
 	</div>
 
