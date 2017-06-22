@@ -22,31 +22,69 @@ public class SmartMeterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	// Injected DAO EJB:
-    @EJB
-    SmartMeterDao smartmeterDao;
- 
-    @Override
-    protected void doGet(
-        HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
- 
-        // Display the list of guests:
-        request.setAttribute("smartmeter", smartmeterDao.getAllSmartMeters());
-        request.getRequestDispatcher("/verwalten.jsp").forward(request, response);
-    }
- 
-    @Override
-    protected void doPost(
-        HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
- 
-        // Handle a new guest:
-        String name = request.getParameter("geraetekennung");
-        String maxbel = request.getParameter("maxbel");
-        if (name != null)
-            smartmeterDao.persist(new SmartMeter(name,maxbel));
- 
-        // Display the list of guests:
-        doGet(request, response);
-    }
+	@EJB
+	SmartMeterDao smartmeterDao;
+	@EJB
+	UserDao userDao;
+
+	/**
+	 * display the list of smart meters
+	 */
+	@Override
+	protected void doGet(
+			HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		// set a single user as the attribute if someone is logged in
+		if (userDao.getLoggedInUser().size() != 0)
+			request.setAttribute("user", userDao.getLoggedInUser().get(0));
+
+		// set a list of all smart meters as the attribute if someone is logged
+		// in
+		request.setAttribute("smartmeter", smartmeterDao.getAllSmartMeters());
+
+		// display the list of smart meters
+		request.getRequestDispatcher("/verwalten.jsp").forward(request, response);
+	}
+
+	/**
+	 * method is called if a new smart meter or user is created or an user
+	 * logged in
+	 */
+	@Override
+	protected void doPost(
+			HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		// create a new smart meter
+		if (request.getParameter("geraetekennung") != null && request.getParameter("maxBelastung") != null) {
+			String geraetekennung = request.getParameter("geraetekennung");
+			double maxBelastung = Double.parseDouble(request.getParameter("maxBelastung"));
+			SmartMeter smartmeter = new SmartMeter(geraetekennung, maxBelastung);
+			smartmeterDao.persist(smartmeter);
+		}
+
+		// create a new user or login exist user
+		if (request.getParameter("user") != null) {
+			String userName = request.getParameter("user");
+			if (userDao.findUserByName(userName).size() == 1) {
+				Long userId = userDao.findUserByName(userName).get(0).getId();
+				userDao.logInUser(userId);
+			} else {
+				User user = new User(request.getParameter("user"));
+				userDao.persist(user);
+			}
+		}
+
+		// logout an user if logout is requested and save last logged in date
+		if (request.getParameter("logout") != null){
+			Long userId = Long.parseLong(request.getParameter("logout"));
+			userDao.lastLogin(userId);
+			userDao.logoutUser(userId);
+		}
+		
+		// display the list of smart meters
+		doGet(request, response);
+	}
+
 }

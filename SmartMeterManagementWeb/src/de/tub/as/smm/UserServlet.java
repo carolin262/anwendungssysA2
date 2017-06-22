@@ -19,33 +19,30 @@ import de.tub.as.smm.models.User;
 @WebServlet("/user")
 public class UserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	// Injected DAO EJB:
-    @EJB
-    UserDao userDao;
- 
-    @Override
-    protected void doGet(
-        HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
- 
-        // Display the list of guests:
-        request.setAttribute("user", userDao.getAllUsers());
-        request.getRequestDispatcher("/user.jsp").forward(request, response);
-    }
- 
-    @Override
-    protected void doPost(
-        HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
- 
-        // Handle a new guest:
-        String name = request.getParameter("name");
-        if (name != null)
-            userDao.persist(new User(name));
- 
-        // Display the list of guests:
-        doGet(request, response);
-    }
-}
 
+	// Injected DAO EJB:
+	@EJB
+	UserDao userDao;
+
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		// Display the list of guests:
+		request.setAttribute("user", userDao.getAllUsers());
+		request.getRequestDispatcher("/verwalten.jsp").forward(request, response);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		// Handle a new guest:
+		String name = request.getParameter("name");
+		if (name != null)
+			userDao.persist(new User(name));
+
+		// Display the list of guests:
+		doGet(request, response);
+	}
+}

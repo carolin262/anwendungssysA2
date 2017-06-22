@@ -9,11 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import de.tub.as.smm.dao.RecordDao;
 import de.tub.as.smm.dao.SmartMeterDao;
+import de.tub.as.smm.dao.UserDao;
+import de.tub.as.smm.models.Record;
 import de.tub.as.smm.models.SmartMeter;
+import de.tub.as.smm.models.User;
 
 /**
- * Servlet implementation class SmartMeterServlet
+ * Servlet implementation class DetailServlet
  */
 @WebServlet("/detail")
 public class DetailServlet extends HttpServlet {
@@ -22,18 +26,56 @@ public class DetailServlet extends HttpServlet {
 	// Injected DAO EJB:
 	@EJB
 	SmartMeterDao smartmeterDao;
+	@EJB
+	RecordDao recordDao;
+	@EJB
+	UserDao userDao;
 
+	/**
+	 * display a smart meter with all its properties
+	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		for (SmartMeter smartmeter : smartmeterDao.getAllSmartMeters()) {
-			if (Long.parseLong(request.getParameter("id")) == smartmeter.id) {
-				smartmeter.randomSpannung();
-				smartmeter.randomStrom();
-				request.setAttribute("smartmeter", smartmeter);
-			}
+
+		// get the correct smart meter
+		Long smartmeterId = Long.parseLong(request.getParameter("id"));
+		SmartMeter smartmeter = smartmeterDao.findSmartmeterById(smartmeterId);
+		// generate random values for "Spannung" & "Stom"
+		smartmeter.randomSpannung();
+		smartmeter.randomStrom();
+		// set correct smart meter object as the attribute
+		request.setAttribute("smartmeter", smartmeter);
+
+		// check whether user is logged in, if true set user as attribute
+		if (userDao.getLoggedInUser().size() != 0) {
+			User user = userDao.getLoggedInUser().get(0);
+			user.setSmartmerterId(smartmeterId);
+			request.setAttribute("user", user);
 		}
+		// display smart meter with all its properties
 		request.getRequestDispatcher("/detail.jsp").forward(request, response);
+	}
+
+	/**
+	 * method is called if a new record is created by a logged in user
+	 */
+	@Override
+	protected void doPost(
+			HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		// create new "Verbrauchswert" record
+		Long smartmeterId = Long.parseLong(request.getParameter("id"));
+		SmartMeter smartmeter = smartmeterDao.findSmartmeterById(smartmeterId);
+		String user = request.getParameter("user");
+		double verbrauchswert = Double.parseDouble(request.getParameter("verbrauchswert"));
+		Record record = new Record(smartmeter, user, verbrauchswert);
+		recordDao.persist(record);
+		smartmeter.getSmartmeterRecords().add(record);
+
+		// display smart meter with all its properties
+		doGet(request, response);
 	}
 
 }
