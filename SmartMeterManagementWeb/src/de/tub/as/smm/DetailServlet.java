@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import de.tub.as.smm.dao.RecordDao;
 import de.tub.as.smm.dao.SmartMeterDao;
@@ -48,11 +49,13 @@ public class DetailServlet extends HttpServlet {
 		request.setAttribute("smartmeter", smartmeter);
 
 		// check whether user is logged in, if true set user as attribute
-		if (userDao.getLoggedInUser().size() != 0) {
-			User user = userDao.getLoggedInUser().get(0);
+		HttpSession session = request.getSession(false);
+		User user = (User) session.getAttribute("user");
+		if (user != null) {
 			user.setSmartmerterId(smartmeterId);
 			request.setAttribute("user", user);
 		}
+
 		// display smart meter with all its properties
 		request.getRequestDispatcher("/detail.jsp").forward(request, response);
 	}
