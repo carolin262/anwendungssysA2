@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import de.tub.as.smm.dao.SmartMeterDao;
 import de.tub.as.smm.dao.UserDao;
@@ -36,11 +37,13 @@ public class SmartMeterServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		// set a single user as the attribute if someone is logged in
-		if (userDao.getLoggedInUser().size() != 0)
-			request.setAttribute("user", userDao.getLoggedInUser().get(0));
+		HttpSession session = request.getSession(false);
+		if (session != null) {
+			User user = (User) session.getAttribute("user");
+			request.setAttribute("user", user);
+		}
 
-		// set a list of all smart meters as the attribute if someone is logged
-		// in
+		// set a list of all smart meters as the attribute
 		request.setAttribute("smartmeter", smartmeterDao.getAllSmartMeters());
 
 		// display the list of smart meters
@@ -56,6 +59,9 @@ public class SmartMeterServlet extends HttpServlet {
 			HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		// get the current session
+		HttpSession session = request.getSession();
+
 		// create a new smart meter
 		if (request.getParameter("geraetekennung") != null && request.getParameter("maxBelastung") != null) {
 			String geraetekennung = request.getParameter("geraetekennung");
@@ -64,25 +70,26 @@ public class SmartMeterServlet extends HttpServlet {
 			smartmeterDao.persist(smartmeter);
 		}
 
-		// create a new user or login exist user
+		// create or log in an user and set user as session attribute
 		if (request.getParameter("user") != null) {
 			String userName = request.getParameter("user");
 			if (userDao.findUserByName(userName).size() == 1) {
-				Long userId = userDao.findUserByName(userName).get(0).getId();
-				userDao.logInUser(userId);
+				User user = userDao.findUserByName(userName).get(0);
+				session.setAttribute("user", user);
 			} else {
 				User user = new User(request.getParameter("user"));
 				userDao.persist(user);
+				session.setAttribute("user", user);
 			}
 		}
 
 		// logout an user if logout is requested and save last logged in date
-		if (request.getParameter("logout") != null){
+		if (request.getParameter("logout") != null) {
+			session.invalidate();
 			Long userId = Long.parseLong(request.getParameter("logout"));
 			userDao.lastLogin(userId);
-			userDao.logoutUser(userId);
 		}
-		
+
 		// display the list of smart meters
 		doGet(request, response);
 	}
