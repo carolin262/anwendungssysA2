@@ -18,7 +18,6 @@ public class User implements Serializable {
 	// persistent fields
 	private Long id;
 	private String name;
-	private boolean status;
 	private Date lastLogin;
 	// non persistent field:
 	private Long smartmeterId;
@@ -29,7 +28,6 @@ public class User implements Serializable {
 
 	public User(String name) {
 		this.name = name;
-		this.status = true;
 		this.lastLogin = new Date(System.currentTimeMillis());
 	}
 
@@ -51,16 +49,7 @@ public class User implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	// status = true if user is logged in
-	public boolean getStatus() {
-		return this.status;
-	}
 
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
-	
 	public Date getLastLogin() {
 		return lastLogin;
 	}
@@ -68,7 +57,7 @@ public class User implements Serializable {
 	public void setLastLogin(Date lastLogin) {
 		this.lastLogin = lastLogin;
 	}
-	
+
 	// helper field to create a record
 	@Transient
 	public Long getSmartmeterId() {
@@ -78,39 +67,47 @@ public class User implements Serializable {
 	public void setSmartmerterId(Long id) {
 		this.smartmeterId = id;
 	}
-	
+
 	@Transient
 	public String getFormattedLastLogin() {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy, HH:mm:ss");
-		return "Zuletzt eingeloggt am: " + simpleDateFormat.format(this.lastLogin);
+		return simpleDateFormat.format(this.lastLogin);
 	}
-	
+
 	// forms
 	public static String loginForm() {
 		return "<br />" +
 				"<h2>Login</h2>" +
 				"<hr />" +
-				"Um neue Ger‰te hinzuf¸gen und Ablesungen vornehmen zu kˆnnen, m¸ssen Sie sich anmelden." +
+				"<table>" +
+				"<tr>" +
+				"<td><img src=\"./media/unlocked.png\" height=\"200\" width=\"200\"></img></td>" +
+				"<td>Um neue Ger√§te hinzuf√ºgen und Ablesungen vornehmen zu k√∂nnen, m√ºssen Sie sich anmelden." +
 				"<br />" +
 				"<br />" +
 				"<form method=\"POST\" action=\"verwalten\">" +
 				"<b>Nutzerkennung:</b>" +
 				"<input pattern=\".{3,}\" required title=\"Mindestens 3 Zeichen\" type=\"text\" name=\"user\" /> " +
 				"<input class=\"inButton\" type=\"submit\" value=\"Anmelden\" />" +
-				"</form>";
+				"</form>" +
+				"</td>" +
+				"</tr>" +
+				"</table>";
+
 	}
 
 	@Transient
 	public String addDevices() {
 		return "<br />" +
-				"<h2>Ger‰te hinzuf¸gen</h2>" +
+				"<h2>Ger√§te hinzuf√ºgen</h2>" +
 				"<hr />" +
 				"<form method=\"POST\" action=\"verwalten\">" +
-				"<b>Ger‰tekennung:</b>" +
-				"<input pattern=\"[A-Z]{2}[0-9]{8}\" required type=\"text\" name=\"geraetekennung\"/> " +
+				"<b>Ger√§tekennung:</b>" +
+				"<input pattern=\"[A-Z]{2}[0-9]{8}\" required title=\"Zwei Gro√übuchstaben gefolgt von 8 Zahlen\" type=\"text\" name=\"geraetekennung\"/> "
+				+
 				"<b>Maximale Belastung</b> (in Ampere): " +
 				"<input required type=\"number\" min=\"50\" max=\"100\" name=\"maxBelastung\"/> " +
-				"<input class=\"inButton\" type=\"submit\" value=\"Hinzuf¸gen\" />" +
+				"<input class=\"inButton\" type=\"submit\" value=\"Hinzuf√ºgen\" />" +
 				"</form>";
 	}
 
@@ -119,14 +116,23 @@ public class User implements Serializable {
 		return "<br />" +
 				"<h2>Logout</h2>" +
 				"<hr />" +
-				"Sie sind eingeloggt als: " + this.getName() +
+				"<table>" +
+				"<tr>" +
+				"<td><img src=\"./media/locked.png\" height=\"200\" width=\"200\"></img></td>" +
+				"<td>Wenn Sie sich abmelden, k√∂nnen Sie keine neuen Ger√§te hinzuf√ºgen oder Ablesungen vornehmen." +
 				"<br />" +
-				this.getFormattedLastLogin() +
+				"<br />" +
+				"Sie sind eingeloggt als: <b>" + this.getName() + "</b>" +
+				"<br />" +
+				"Zuletzt eingeloggt am: <b>" + this.getFormattedLastLogin() + "</b>" +
 				"<form method=\"POST\" action=\"verwalten\">" +
 				"<input type=\"hidden\" name=\"logout\" value=\"" + this.getId() + "\" />" +
 				"<br />" +
 				"<input class=\"inButton\" type=\"submit\" value=\"Abmelden\" />" +
-				"</form>";
+				"</form>" +
+				"</td>" +
+				"</tr>" +
+				"</table>";
 	}
 
 	@Transient
@@ -136,14 +142,14 @@ public class User implements Serializable {
 				"<hr />" +
 				"<b>Nutzerkennung:</b>" +
 				"<br />" +
-				"Sie sind eingeloggt als: " + this.getName() +
+				"Sie sind eingeloggt als: <b>" + this.getName() + "</b>" +
 				"<br />" +
 				"<br />" +
 				"<form method=\"POST\" action=\"detail\">" +
 				"<input type=\"hidden\" name=\"user\" value=\"" + this.getName() + "\">" +
 				"<input type=\"hidden\" name=\"id\" value=\"" + this.getSmartmeterId() + "\">" +
 				"<b>Verbrauchswert:</b>" +
-				"<input required type=\"number\" name=\"verbrauchswert\" /> " +
+				"<input required type=\"number\" name=\"verbrauchswert\" min=\"0\" /> " +
 				"<input class=\"inButton\" type=\"submit\" value=\"Ablesen\" />" +
 				"</form>";
 	}
