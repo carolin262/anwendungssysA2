@@ -82,8 +82,9 @@
 				</tr>
 				<%
 					List<Record> allRecords = smartmeter.getSmartmeterRecords();
-					if (allRecords != null) {
-						for (Record record : allRecords) {
+					ListIterator<Record> iter = allRecords.listIterator(allRecords.size());
+					while (iter.hasPrevious()) {
+						Record record = iter.previous();
 				%>
 				<tr>
 					<td><%=record.getUser()%></td>
@@ -91,7 +92,6 @@
 					<td><%=record.getFormattedDate()%></td>
 				</tr>
 				<%
-					}
 					}
 				%>
 			</table>
