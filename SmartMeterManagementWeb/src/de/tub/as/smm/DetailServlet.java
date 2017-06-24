@@ -49,7 +49,7 @@ public class DetailServlet extends HttpServlet {
 		request.setAttribute("smartmeter", smartmeter);
 
 		// check whether user is logged in, if true set user as attribute
-		HttpSession session = request.getSession(false);
+		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 		if (user != null) {
 			user.setSmartmerterId(smartmeterId);
