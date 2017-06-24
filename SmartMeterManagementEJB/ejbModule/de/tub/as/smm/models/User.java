@@ -85,7 +85,7 @@ public class User implements Serializable {
 				"<td>Um neue Geräte hinzufügen und Ablesungen vornehmen zu können, müssen Sie sich anmelden." +
 				"<br />" +
 				"<br />" +
-				"<form method=\"POST\" action=\"verwalten\">" +
+				"<form method=\"POST\" action=\"login\">" +
 				"<b>Nutzerkennung:</b>" +
 				"<input pattern=\".{3,}\" required title=\"Mindestens 3 Zeichen\" type=\"text\" name=\"user\" /> " +
 				"<input class=\"inButton\" type=\"submit\" value=\"Anmelden\" />" +
@@ -125,7 +125,7 @@ public class User implements Serializable {
 				"Sie sind eingeloggt als: <b>" + this.getName() + "</b>" +
 				"<br />" +
 				"Zuletzt eingeloggt am: <b>" + this.getFormattedLastLogin() + "</b>" +
-				"<form method=\"POST\" action=\"verwalten\">" +
+				"<form method=\"POST\" action=\"logout\">" +
 				"<input type=\"hidden\" name=\"logout\" value=\"" + this.getId() + "\" />" +
 				"<br />" +
 				"<input class=\"inButton\" type=\"submit\" value=\"Abmelden\" />" +
