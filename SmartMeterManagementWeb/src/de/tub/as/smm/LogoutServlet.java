@@ -39,11 +39,13 @@ public class LogoutServlet extends HttpServlet {
 
 		// get the current session
 		HttpSession session = request.getSession();
+		
 		// logout an user if logout is requested and save last logged in date
 		session.invalidate();
 		Long userId = Long.parseLong(request.getParameter("logout"));
 		userDao.lastLogin(userId);
-		// Display the list of guests:
+		
+		// display "verwalten"
 		doGet(request, response);
 	}
 }
