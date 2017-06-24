@@ -52,7 +52,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("user", user);
 		}
 
-		// Display the list of guests:
+		// display "verwalten"
 		doGet(request, response);
 	}
 }
